@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NumberGuessingGame.src.Messages;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace NumberGuessingGame;
 
@@ -21,7 +20,7 @@ internal class Program
     private static void ConfigureServices(IServiceCollection services)
     {
         services
-            .AddSingleton<IMessages, Messages>()
+            .AddSingleton<IMessagesProvider, MessagesProvider>()
             .AddSingleton<Game>();
     }
 
