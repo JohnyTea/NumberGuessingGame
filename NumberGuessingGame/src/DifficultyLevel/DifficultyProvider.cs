@@ -16,7 +16,7 @@ internal class DifficultyProvider : IDifficultyProvider
     public IUserOutputs UserOutputs { get; init; }
     public IMessagesProvider MessagesProvider { get; init; }
 
-    DifficultyLevel IDifficultyProvider.GetDifficultyLevel()
+    DifficultyLevel IDifficultyProvider.SelectDifficultyLevel()
     {
         UserOutputs.WriteLine(MessagesProvider.GetDifficultyMenuMessage());
         int userInput = UserInputs.GetUserInputAsInt();

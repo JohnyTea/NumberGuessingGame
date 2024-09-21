@@ -9,13 +9,16 @@ public class DifficultyProviderTests
 {
     private IDifficultyProvider DifficultyProvider { get; init; }
 
-    private readonly Mock<IUserInputs> mockInputProvider = new();
-    private readonly Mock<IUserOutputs> mockOutputProvider = new();
-    private readonly Mock<IMessagesProvider> mockMessageProvider = new();
+    private Mock<IUserInputs> MockInputProvider { get; init; }
+    private Mock<IUserOutputs> MockOutputProvider { get; init; }
+    private IMessagesProvider MessageProvider { get; init; }
 
     public DifficultyProviderTests()
     {
-        DifficultyProvider = new DifficultyProvider(mockInputProvider.Object, mockOutputProvider.Object, mockMessageProvider.Object);
+        MockInputProvider = new Mock<IUserInputs>();
+        MockOutputProvider = new Mock<IUserOutputs>();
+        MessageProvider = new MessagesProvider();
+        DifficultyProvider = new DifficultyProvider(MockInputProvider.Object, MockOutputProvider.Object, MessageProvider);
     }
 
     [Theory]
@@ -26,10 +29,10 @@ public class DifficultyProviderTests
     public void DifficultyProvider_ReturnsCorrectDifficultyLevel_WhenUserSends_CorrectInput(int userInput, DifficultyLevel expectedOutput)
     {
         //Arrange
-        mockInputProvider.Setup(inputReader => inputReader.GetUserInputAsInt()).Returns(userInput);
+        MockInputProvider.Setup(inputReader => inputReader.GetUserInputAsInt()).Returns(userInput);
 
         //Act
-        var result = DifficultyProvider.GetDifficultyLevel();
+        var result = DifficultyProvider.SelectDifficultyLevel();
 
         //Assert
         result.Should().Be(expectedOutput);

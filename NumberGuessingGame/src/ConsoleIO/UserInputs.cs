@@ -5,34 +5,27 @@ namespace NumberGuessingGame.src.ConsoleIO;
 internal class UserInputs : IUserInputs
 {
     private IMessagesProvider Messages { get; init; }
-    private IUserOutputs UserOuputs { get; }
+    private IUserOutputs UserOuputs { get; init; }
 
     public UserInputs(IMessagesProvider messages, IUserOutputs userOuputs)
     {
         Messages = messages;
         UserOuputs = userOuputs;
     }
-    public UserInputs(IMessagesProvider messages)
-    {
-        Messages = messages;
-    }
 
     public int GetUserInputAsInt()
     {
-        while (true)
+        do
         {
-            try
+            if (int.TryParse(GetUserInput(), out int intInput))
             {
-                if (int.TryParse(GetUserInput(), out int intInput))
-                {
-                    return intInput;
-                }
+                return intInput;
             }
-            catch
+            else
             {
-                UserOuputs?.WriteLine(Messages.InvalidInputMustBeNumber());
+                UserOuputs.WriteLine(Messages.InvalidInputMustBeNumber());
             }
-        }
+        }while (true);
     }
 
     public string? GetUserInput()

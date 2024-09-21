@@ -1,6 +1,6 @@
 ﻿namespace NumberGuessingGame.src.ConsoleIO;
 
-internal class UserOuputs : IUserOutputs
+internal class UserOutputs : IUserOutputs
 {
     public void WriteLine(string message)
     {

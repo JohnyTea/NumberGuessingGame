@@ -2,28 +2,33 @@
 
 internal class MessagesProvider : IMessagesProvider
 {
-    public string PickedEasyDifficulty()
+    string IMessagesProvider.GetRulesMessage()
     {
-        throw new NotImplementedException();
+        return "I'm thinking of a number between 1 and 100! You need to guess it!";
     }
 
-    public string PickedHardDifficulty()
+    string IMessagesProvider.PickedEasyDifficulty()
     {
-        throw new NotImplementedException();
+        return "Picked easy difficulty";
     }
 
-    public string PickedMediumDifficulty()
+    string IMessagesProvider.PickedHardDifficulty()
     {
-        throw new NotImplementedException();
+        return "Picked hard difficulty";
+    }
+
+    string IMessagesProvider.PickedMediumDifficulty()
+    {
+        return "Picked medium difficulty";
     }
 
     string IMessagesProvider.GetDifficultyMenuMessage()
     {
         return
 $@"Please select the difficulty level:
-1. Easy (10 chances)
-2. Medium (5 chances)
-3. Hard (3 chances)";
+1. Easy (15 chances)
+2. Medium (10 chances)
+3. Hard (7 chances)";
     }
 
     string IMessagesProvider.GetWelcomeMessage()
@@ -34,5 +39,30 @@ $@"Please select the difficulty level:
     string IMessagesProvider.InvalidInputMustBeNumber()
     {
         return $"This is invalid input, please provide number this time";
+    }
+
+    string IMessagesProvider.GetWinningMessage()
+    {
+        return $"Good job! You Win!";
+    }
+
+    string IMessagesProvider.GetLossingMessage(int correctNumber)
+    {
+        return $"You lost! Correct number was: {correctNumber}";
+    }
+
+    string IMessagesProvider.GetTooHighGuessMessage()
+    {
+        return $"It is lower number!";
+    }
+
+    string IMessagesProvider.GetTooLowGuessMessage()
+    {
+        return $"It is higher number!";
+    }
+
+    string IMessagesProvider.GetGuessTheNumberMessage()
+    {
+        return $"Guess the number!";
     }
 }

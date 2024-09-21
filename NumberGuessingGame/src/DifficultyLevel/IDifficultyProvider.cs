@@ -2,5 +2,5 @@
 
 public interface IDifficultyProvider
 {
-    DifficultyLevel GetDifficultyLevel();
+    DifficultyLevel SelectDifficultyLevel();
 }
