@@ -7,23 +7,22 @@ namespace NumberGuessingGame;
 
 internal class Program
 {
-    static void Main(string[] args)
-    {
-        var services = new ServiceCollection();
-        ConfigureServices(services);
-        var serviceProvider = services.BuildServiceProvider();
+	private static void Main(string[] args)
+	{
+		var services = new ServiceCollection();
+		ConfigureServices(services);
+		var serviceProvider = services.BuildServiceProvider();
 
-        var game = serviceProvider.GetRequiredService<Game>();
-        game.StartGame();
-    }
-    private static void ConfigureServices(IServiceCollection services)
-    {
-        services.AddSingleton<Game>();
-        services.AddSingleton<IMessagesProvider, MessagesProvider>();
-        services.AddSingleton<IUserInputs, UserInputs>();
-        services.AddSingleton<IUserOutputs, UserOutputs>();
-        services.AddSingleton<IDifficultyProvider, DifficultyProvider>();
-        services.AddSingleton<Random>();
-    }
-
+		var game = serviceProvider.GetRequiredService<Game>();
+		game.StartGame();
+	}
+	private static void ConfigureServices(IServiceCollection services)
+	{
+		_ = services.AddSingleton<Game>();
+		_ = services.AddSingleton<IMessagesProvider, MessagesProvider>();
+		_ = services.AddSingleton<IUserInputs, UserInputs>();
+		_ = services.AddSingleton<IUserOutputs, UserOutputs>();
+		_ = services.AddSingleton<IDifficultyProvider, DifficultyProvider>();
+		_ = services.AddSingleton<Random>();
+	}
 }

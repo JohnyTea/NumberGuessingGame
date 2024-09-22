@@ -2,8 +2,8 @@
 
 internal class UserOutputs : IUserOutputs
 {
-    public void WriteLine(string message)
-    {
-        Console.WriteLine(message);
-    }
+	public void WriteLine(string message)
+	{
+		Console.WriteLine(message);
+	}
 }

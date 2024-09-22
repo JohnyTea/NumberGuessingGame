@@ -2,6 +2,6 @@
 
 public interface IUserInputs
 {
-    string? GetUserInput();
-    int GetUserInputAsInt();
+	string? GetUserInput();
+	int GetUserInputAsInt();
 }

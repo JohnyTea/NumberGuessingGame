@@ -2,5 +2,5 @@
 
 public interface IUserOutputs
 {
-    void WriteLine(string message);
+	void WriteLine(string message);
 }
